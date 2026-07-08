@@ -1,0 +1,55 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect your Grewa pump",
+        "description": "Enter the device ID and API key for your pump. You can find these in the Grewa portal.",
+        "data": {
+          "device_id": "Device ID",
+          "api_key": "API key",
+          "base_url": "API base URL"
+        },
+        "data_description": {
+          "base_url": "Leave the default unless you are connecting to a self-hosted or staging Grewa service."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Re-authenticate Grewa",
+        "description": "Your API key is no longer valid. Enter a new key to reconnect.",
+        "data": {
+          "api_key": "API key"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect",
+      "invalid_auth": "Invalid authentication",
+      "unknown": "Unexpected error"
+    },
+    "abort": {
+      "already_configured": "This device is already configured",
+      "reauth_successful": "Re-authentication was successful"
+    }
+  },
+  "entity": {
+    "sensor": {
+      "pressure": { "name": "Pressure" },
+      "target_pressure": { "name": "Target pressure" },
+      "start_pressure": { "name": "Start pressure" },
+      "start_pressure_pct": { "name": "Start pressure setpoint" },
+      "power": { "name": "Power" },
+      "voltage": { "name": "Voltage" },
+      "water_temp": { "name": "Water temperature" },
+      "motor_speed": { "name": "Motor speed" },
+      "runtime": { "name": "Runtime" },
+      "energy": { "name": "Energy" },
+      "error_code": { "name": "Error code" },
+      "faults": { "name": "Faults" },
+      "reported_at": { "name": "Last reported" }
+    },
+    "binary_sensor": {
+      "online": { "name": "Online" },
+      "running": { "name": "Running" }
+    }
+  }
+}
