@@ -25,7 +25,7 @@ power, energy and status sensors.
 ### HACS (recommended)
 
 1. In HACS, go to **Integrations → ⋮ → Custom repositories**.
-2. Add `https://github.com/jgresh/homeassistant-grewa` with category **Integration**.
+2. Add `https://github.com/Grewa-water/homeassistant-grewa` with category **Integration**.
 3. Search for **Grewa**, install it, and restart Home Assistant.
 
 ### Manual

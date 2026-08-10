@@ -1,12 +1,12 @@
 {
   "domain": "grewa",
   "name": "Grewa",
-  "codeowners": ["@jgresh"],
+  "codeowners": ["@JoelGresham"],
   "config_flow": true,
-  "documentation": "https://github.com/jgresh/homeassistant-grewa",
+  "documentation": "https://github.com/Grewa-water/homeassistant-grewa",
   "integration_type": "device",
   "iot_class": "cloud_polling",
-  "issue_tracker": "https://github.com/jgresh/homeassistant-grewa/issues",
+  "issue_tracker": "https://github.com/Grewa-water/homeassistant-grewa/issues",
   "requirements": [],
   "version": "0.1.0"
 }
