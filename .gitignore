@@ -3,3 +3,8 @@ __pycache__/
 .DS_Store
 .venv/
 venv/
+
+# Local credentials for testing against the live API — never commit
+grewa.env
+*.env
+!*.env.example
