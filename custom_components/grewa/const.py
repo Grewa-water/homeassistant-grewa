@@ -10,7 +10,7 @@ CONF_API_KEY = "api_key"
 CONF_DEVICE_ID = "device_id"
 CONF_BASE_URL = "base_url"
 
-DEFAULT_BASE_URL = "https://grewa-production.up.railway.app"
+DEFAULT_BASE_URL = "https://api.grewa.com.au"
 
 MANUFACTURER = "Grewa"
 
