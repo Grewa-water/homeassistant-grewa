@@ -93,6 +93,11 @@ SENSORS: tuple[GrewaSensorEntityDescription, ...] = (
         translation_key="pressure",
         device_class=SensorDeviceClass.PRESSURE,
         native_unit_of_measurement=UnitOfPressure.KPA,
+        # The pump's own display and the Grewa app both talk in bar, so show
+        # bar by default. kPa stays the recorded unit, and Home Assistant lets
+        # each user pick a different display unit per entity.
+        suggested_unit_of_measurement=UnitOfPressure.BAR,
+        suggested_display_precision=1,
         state_class=SensorStateClass.MEASUREMENT,
         value_fn=lambda data: _capability(data, "pressure_kpa"),
     ),
@@ -101,6 +106,11 @@ SENSORS: tuple[GrewaSensorEntityDescription, ...] = (
         translation_key="target_pressure",
         device_class=SensorDeviceClass.PRESSURE,
         native_unit_of_measurement=UnitOfPressure.KPA,
+        # The pump's own display and the Grewa app both talk in bar, so show
+        # bar by default. kPa stays the recorded unit, and Home Assistant lets
+        # each user pick a different display unit per entity.
+        suggested_unit_of_measurement=UnitOfPressure.BAR,
+        suggested_display_precision=1,
         state_class=SensorStateClass.MEASUREMENT,
         value_fn=lambda data: _capability(data, "target_pressure_kpa"),
     ),
@@ -109,6 +119,11 @@ SENSORS: tuple[GrewaSensorEntityDescription, ...] = (
         translation_key="start_pressure",
         device_class=SensorDeviceClass.PRESSURE,
         native_unit_of_measurement=UnitOfPressure.KPA,
+        # The pump's own display and the Grewa app both talk in bar, so show
+        # bar by default. kPa stays the recorded unit, and Home Assistant lets
+        # each user pick a different display unit per entity.
+        suggested_unit_of_measurement=UnitOfPressure.BAR,
+        suggested_display_precision=1,
         state_class=SensorStateClass.MEASUREMENT,
         value_fn=lambda data: _capability(data, "start_pressure_kpa"),
     ),

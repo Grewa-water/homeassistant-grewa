@@ -77,9 +77,10 @@ That's it — your pump appears as a device with all its sensors.
 | Running | binary_sensor | motor turning |
 | Power switch | binary_sensor | mains power on (standby vs off) |
 
-Pressures are reported in kPa. Home Assistant converts per user — open any
-pressure entity's settings and pick **bar**, **psi** or another unit, and it
-converts the display without affecting the stored value.
+Pressures are shown in **bar**, matching the pump's display and the Grewa
+app. They are recorded in kPa, so if you prefer a different unit open any
+pressure entity's settings and pick **kPa**, **psi** or another — it changes
+the display without affecting stored history.
 
 The integration is read-only: it monitors the pump but cannot control it,
 because Grewa API keys are deliberately not permitted to write.
