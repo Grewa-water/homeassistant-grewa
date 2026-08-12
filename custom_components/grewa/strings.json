@@ -49,7 +49,7 @@
       "voltage": { "name": "Voltage" },
       "water_temp": { "name": "Water temperature" },
       "motor_speed": { "name": "Motor speed" },
-      "runtime": { "name": "Runtime" },
+      "runtime": { "name": "Power-on time" },
       "error_code": { "name": "Error code" },
       "faults": { "name": "Faults" },
       "reported_at": { "name": "Last reported" }

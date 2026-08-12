@@ -11,12 +11,12 @@ power, energy and status sensors.
 - Full UI setup — no YAML required
 - One Home Assistant **device** per pump, with model and serial from the nameplate
 - Live sensors, polled every 30 seconds:
-  - Pressure, target pressure, start pressure & start-pressure setpoint
-  - Power, voltage, energy (with long-term statistics)
-  - Water temperature, motor speed, runtime
+  - Pump status — **Off**, **Standby** or **Running**, matching the Grewa app
+  - Current pressure, set pressure, cut-in pressure & cut-in point
+  - Power, voltage, water temperature, motor speed, power-on time
   - Error code and active fault codes
   - Last reported timestamp
-- Binary sensors: **Online** (connectivity) and **Running**
+- Binary sensors: **Online**, **Running** (motor turning) and **Power switch**
 - Automatic re-authentication prompt if your API key changes
 - Redacted diagnostics download for troubleshooting
 
@@ -24,9 +24,18 @@ power, energy and status sensors.
 
 ### HACS (recommended)
 
-1. In HACS, go to **Integrations → ⋮ → Custom repositories**.
-2. Add `https://github.com/Grewa-water/homeassistant-grewa` with category **Integration**.
-3. Search for **Grewa**, install it, and restart Home Assistant.
+1. Open **HACS** from the Home Assistant sidebar (not Settings → Devices &
+   Services → HACS, which is only the integration's own settings).
+2. Go to **⋮ → Custom repositories**, add
+   `https://github.com/Grewa-water/homeassistant-grewa` with category
+   **Integration**, and click **Add**.
+3. Search for **Grewa**, open it, click **Download**, then restart Home
+   Assistant when prompted.
+
+The Grewa entry shows a placeholder image in the HACS store list. That is
+expected for every custom integration — HACS reads store icons from the
+Home Assistant brands CDN, which no longer accepts custom integrations. The
+Grewa icon appears normally everywhere inside Home Assistant itself.
 
 ### Manual
 
@@ -51,21 +60,29 @@ That's it — your pump appears as a device with all its sensors.
 
 | Entity | Type | Notes |
 | --- | --- | --- |
-| Pressure | sensor | kPa |
-| Target pressure | sensor | kPa |
-| Start pressure | sensor | kPa |
-| Start pressure setpoint | sensor | % |
+| Status | sensor | Off / Standby / Running |
+| Current pressure | sensor | kPa |
+| Set pressure | sensor | kPa |
+| Cut-in pressure | sensor | kPa |
+| Cut-in point | sensor | % |
 | Power | sensor | W |
 | Voltage | sensor | V (diagnostic) |
 | Water temperature | sensor | °C |
 | Motor speed | sensor | rpm |
-| Runtime | sensor | h, total increasing |
-| Energy | sensor | kWh, total increasing |
+| Power-on time | sensor | h, total increasing — hours powered, not motor hours |
 | Error code | sensor | diagnostic |
 | Faults | sensor | diagnostic |
 | Last reported | sensor | timestamp, diagnostic |
 | Online | binary_sensor | connectivity |
-| Running | binary_sensor | running |
+| Running | binary_sensor | motor turning |
+| Power switch | binary_sensor | mains power on (standby vs off) |
+
+Pressures are reported in kPa. Home Assistant converts per user — open any
+pressure entity's settings and pick **bar**, **psi** or another unit, and it
+converts the display without affecting the stored value.
+
+The integration is read-only: it monitors the pump but cannot control it,
+because Grewa API keys are deliberately not permitted to write.
 
 ## Contributing
 

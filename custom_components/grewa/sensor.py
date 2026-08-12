@@ -151,6 +151,9 @@ SENSORS: tuple[GrewaSensorEntityDescription, ...] = (
         state_class=SensorStateClass.MEASUREMENT,
         value_fn=lambda data: _capability(data, "motor_speed"),
     ),
+    # Despite the capability name, runtime_h counts powered-on hours rather
+    # than motor hours. A later firmware is expected to report true motor
+    # runtime; until then the entity is named for what it actually measures.
     GrewaSensorEntityDescription(
         key="runtime",
         translation_key="runtime",
