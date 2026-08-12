@@ -18,7 +18,6 @@ from homeassistant.const import (
     REVOLUTIONS_PER_MINUTE,
     EntityCategory,
     UnitOfElectricPotential,
-    UnitOfEnergy,
     UnitOfPower,
     UnitOfPressure,
     UnitOfTemperature,
@@ -159,14 +158,6 @@ SENSORS: tuple[GrewaSensorEntityDescription, ...] = (
         native_unit_of_measurement=UnitOfTime.HOURS,
         state_class=SensorStateClass.TOTAL_INCREASING,
         value_fn=lambda data: _capability(data, "runtime_h"),
-    ),
-    GrewaSensorEntityDescription(
-        key="energy",
-        translation_key="energy",
-        device_class=SensorDeviceClass.ENERGY,
-        native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
-        state_class=SensorStateClass.TOTAL_INCREASING,
-        value_fn=lambda data: _capability(data, "energy_kwh"),
     ),
     GrewaSensorEntityDescription(
         key="error_code",

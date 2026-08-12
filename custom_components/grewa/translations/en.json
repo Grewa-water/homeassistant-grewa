@@ -50,7 +50,6 @@
       "water_temp": { "name": "Water temperature" },
       "motor_speed": { "name": "Motor speed" },
       "runtime": { "name": "Runtime" },
-      "energy": { "name": "Energy" },
       "error_code": { "name": "Error code" },
       "faults": { "name": "Faults" },
       "reported_at": { "name": "Last reported" }
