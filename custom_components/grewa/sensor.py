@@ -58,6 +58,22 @@ def _faults(data: dict[str, Any]) -> str:
     return ", ".join(str(code) for code in codes) or "None"
 
 
+def _pump_status(data: dict[str, Any]) -> str | None:
+    """Return the pump's overall state as off, standby or running.
+
+    Mirrors the status badge in the Grewa app: motor activity wins, otherwise
+    the power switch decides between standby and off.
+    """
+    power_on = _capability(data, "power_on")
+    speed = _capability(data, "motor_speed")
+    draw = _capability(data, "power_w")
+    if power_on is None and speed is None and draw is None:
+        return None
+    if (speed or 0) > 0 or (draw or 0) > 0:
+        return "running"
+    return "standby" if power_on else "off"
+
+
 @dataclass(frozen=True, kw_only=True)
 class GrewaSensorEntityDescription(SensorEntityDescription):
     """Describes a Grewa sensor."""
@@ -66,6 +82,13 @@ class GrewaSensorEntityDescription(SensorEntityDescription):
 
 
 SENSORS: tuple[GrewaSensorEntityDescription, ...] = (
+    GrewaSensorEntityDescription(
+        key="pump_status",
+        translation_key="pump_status",
+        device_class=SensorDeviceClass.ENUM,
+        options=["off", "standby", "running"],
+        value_fn=_pump_status,
+    ),
     GrewaSensorEntityDescription(
         key="pressure",
         translation_key="pressure",

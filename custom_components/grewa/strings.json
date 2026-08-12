@@ -33,10 +33,18 @@
   },
   "entity": {
     "sensor": {
-      "pressure": { "name": "Pressure" },
-      "target_pressure": { "name": "Target pressure" },
-      "start_pressure": { "name": "Start pressure" },
-      "start_pressure_pct": { "name": "Start pressure setpoint" },
+      "pump_status": {
+        "name": "Status",
+        "state": {
+          "off": "Off",
+          "standby": "Standby",
+          "running": "Running"
+        }
+      },
+      "pressure": { "name": "Current pressure" },
+      "target_pressure": { "name": "Set pressure" },
+      "start_pressure": { "name": "Cut-in pressure" },
+      "start_pressure_pct": { "name": "Cut-in point" },
       "power": { "name": "Power" },
       "voltage": { "name": "Voltage" },
       "water_temp": { "name": "Water temperature" },
