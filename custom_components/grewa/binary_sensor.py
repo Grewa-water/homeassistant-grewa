@@ -24,6 +24,21 @@ def _capability(data: dict[str, Any], key: str) -> Any:
     return capabilities.get(key)
 
 
+def _is_running(data: dict[str, Any]) -> bool | None:
+    """Return True when the motor is actually turning.
+
+    ``power_on`` is the pump's power switch and stays on while the motor is
+    parked, so it cannot stand in for "running". Motor activity is derived
+    from speed and draw instead, matching how the Grewa app distinguishes
+    "Standby" from "Running".
+    """
+    speed = _capability(data, "motor_speed")
+    draw = _capability(data, "power_w")
+    if speed is None and draw is None:
+        return None
+    return (speed or 0) > 0 or (draw or 0) > 0
+
+
 @dataclass(frozen=True, kw_only=True)
 class GrewaBinarySensorEntityDescription(BinarySensorEntityDescription):
     """Describes a Grewa binary sensor."""
@@ -42,6 +57,12 @@ BINARY_SENSORS: tuple[GrewaBinarySensorEntityDescription, ...] = (
         key="running",
         translation_key="running",
         device_class=BinarySensorDeviceClass.RUNNING,
+        value_fn=_is_running,
+    ),
+    GrewaBinarySensorEntityDescription(
+        key="power_switch",
+        translation_key="power_switch",
+        device_class=BinarySensorDeviceClass.POWER,
         value_fn=lambda data: _capability(data, "power_on"),
     ),
 )
