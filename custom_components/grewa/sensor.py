@@ -166,16 +166,17 @@ SENSORS: tuple[GrewaSensorEntityDescription, ...] = (
         state_class=SensorStateClass.MEASUREMENT,
         value_fn=lambda data: _capability(data, "motor_speed"),
     ),
-    # Despite the capability name, runtime_h counts powered-on hours rather
-    # than motor hours. A later firmware is expected to report true motor
-    # runtime; until then the entity is named for what it actually measures.
+    # powered_on_h counts hours the pump has been energised, not motor hours:
+    # a pump that has never started still accumulates it, so it must not be
+    # used for service intervals. The entity key stays "runtime" so existing
+    # installations keep their unique IDs and recorded history.
     GrewaSensorEntityDescription(
         key="runtime",
         translation_key="runtime",
         device_class=SensorDeviceClass.DURATION,
         native_unit_of_measurement=UnitOfTime.HOURS,
         state_class=SensorStateClass.TOTAL_INCREASING,
-        value_fn=lambda data: _capability(data, "runtime_h"),
+        value_fn=lambda data: _capability(data, "powered_on_h"),
     ),
     GrewaSensorEntityDescription(
         key="error_code",
