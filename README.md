@@ -1,6 +1,6 @@
 # Grewa for Home Assistant
 
-[![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://github.com/hacs/integration)
+[![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg)](https://github.com/hacs/integration)
 
 A Home Assistant integration for **Grewa** water-boost pumps. It connects to the
 Grewa cloud API and exposes your pump as a single device with live pressure,
@@ -26,15 +26,14 @@ power, energy and status sensors.
 
 1. Open **HACS** from the Home Assistant sidebar (not Settings → Devices &
    Services → HACS, which is only the integration's own settings).
-2. Go to **⋮ → Custom repositories**, add
-   `https://github.com/Grewa-water/homeassistant-grewa` with category
-   **Integration**, and click **Add**.
-3. Search for **Grewa**, open it, click **Download**, then restart Home
+2. Search for **Grewa**, open it, click **Download**, then restart Home
    Assistant when prompted.
 
+[![Open your Home Assistant instance and open this repository in HACS.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Grewa-water&repository=homeassistant-grewa&category=integration)
+
 The Grewa entry shows a placeholder image in the HACS store list. That is
-expected for every custom integration — HACS reads store icons from the
-Home Assistant brands CDN, which no longer accepts custom integrations. The
+expected: HACS reads store icons from the Home Assistant brands CDN, which no
+longer accepts community integrations. The
 Grewa icon appears normally everywhere inside Home Assistant itself.
 
 ### Manual
