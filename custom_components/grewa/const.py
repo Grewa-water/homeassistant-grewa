@@ -14,6 +14,6 @@ DEFAULT_BASE_URL = "https://api.grewa.com.au"
 
 MANUFACTURER = "Grewa"
 
-# The pump reports roughly every few seconds; polling every 30s is a good
-# balance between freshness and load on the cloud service.
-SCAN_INTERVAL = timedelta(seconds=30)
+# The Grewa API serves API-key readings at most 5 minutes old (one shared
+# cloud read per pump), so polling faster only re-reads the same values.
+SCAN_INTERVAL = timedelta(minutes=5)

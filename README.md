@@ -10,7 +10,7 @@ power, energy and status sensors.
 
 - Full UI setup — no YAML required
 - One Home Assistant **device** per pump, with model and serial from the nameplate
-- Live sensors, polled every 30 seconds:
+- Live sensors, updated every 5 minutes:
   - Pump status — **Off**, **Standby** or **Running**, matching the Grewa app
   - Current pressure, set pressure, cut-in pressure & cut-in point
   - Power, voltage, water temperature, motor speed, power-on time
